@@ -8,7 +8,7 @@ pipeline {
   options {
     timestamps()
     disableConcurrentBuilds()
-    skipDefaultCheckou() // Default checkout not needed - Git Clone step will perform checkout
+    skipDefaultCheckout() // Default checkout not needed - Git Clone step will perform checkout
   }
   stages {
     stage('Process info') {
