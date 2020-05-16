@@ -54,6 +54,7 @@ pipeline {
     always {
       container('cdt') {
     /* Disabled for experiments */
+      }
     }
   }
 }
