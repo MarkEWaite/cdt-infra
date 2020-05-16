@@ -8,7 +8,7 @@ pipeline {
   options {
     timestamps()
     disableConcurrentBuilds()
-    skipDefaultCheckout() // Default checkout not needed - Git Clone step will perform checkout
+    // skipDefaultCheckout() // Accept that there is a default checkout - Git Clone step will perform checkout
   }
   stages {
     stage('Process info') {
@@ -26,9 +26,10 @@ pipeline {
     stage('Git Clone') {
       steps {
         // container('cdt') {
-          sh('echo dir contents before deleteDir && ls -al')
-          deleteDir() // Act as though agent is ephemeral
-          sh('echo dir contents after deleteDir && ls -al')
+          // sh('echo dir contents before deleteDir && ls -al')
+          // deleteDir() // Act as though agent is ephemeral
+          // sh('echo dir contents after deleteDir && ls -al')
+          sh('echo dir contents before checkout && ls -al')
           checkout([$class: 'GitSCM', branches: [[name: '*/master']],  extensions: [[$class: 'CloneOption',  noTags: true, timeout: 20]], userRemoteConfigs: [[url: 'git://git.eclipse.org/gitroot/cdt/org.eclipse.cdt.git']]])
         // }
       }
