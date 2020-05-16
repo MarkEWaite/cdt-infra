@@ -26,10 +26,10 @@ pipeline {
     stage('Git Clone') {
       steps {
         // container('cdt') {
-          sh('echo dir contents before deleteDir && ls -a')
+          sh('echo dir contents before deleteDir && ls -al')
           deleteDir() // Act as though agent is ephemeral
-          sh('echo dir contents after deleteDir && ls -a')
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CheckoutOption', timeout: 20], [$class: 'CloneOption', depth: 0, noTags: true, reference: '', shallow: false, timeout: 20]], submoduleCfg: [], userRemoteConfigs: [[url: 'git://git.eclipse.org/gitroot/cdt/org.eclipse.cdt.git']]])
+          sh('echo dir contents after deleteDir && ls -al')
+          checkout([$class: 'GitSCM', branches: [[name: '*/master']],  extensions: [[$class: 'CloneOption',  noTags: true, timeout: 20]], userRemoteConfigs: [[url: 'git://git.eclipse.org/gitroot/cdt/org.eclipse.cdt.git']]])
         // }
       }
     }
