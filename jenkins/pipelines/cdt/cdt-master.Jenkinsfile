@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'linux && !cloud && home-jagent' // Choose a specific Linux computer at my house with rotating disc
+    label 'freebsd && !cloud && git.markwaite.net' // Choose a specific FreeBSD computer at my house with rotating discs on ZFS file system
     // kubernetes {
     //   yamlFile 'jenkins/pod-templates/cdt-full-pod-standard.yaml'
     // }
@@ -29,6 +29,7 @@ pipeline {
           // sh('echo dir contents before deleteDir && ls -al')
           // deleteDir() // Act as though agent is ephemeral
           // sh('echo dir contents after deleteDir && ls -al')
+          sh('echo git config before checkout && cat .git/config')
           sh('echo dir contents before checkout && ls -al')
           checkout([$class: 'GitSCM', branches: [[name: '*/master']],  extensions: [[$class: 'CloneOption',  noTags: true, timeout: 20]], userRemoteConfigs: [[url: 'git://git.eclipse.org/gitroot/cdt/org.eclipse.cdt.git']]])
         // }
