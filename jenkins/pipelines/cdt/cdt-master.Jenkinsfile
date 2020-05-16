@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'arm' // Choose a Raspberry Pi
+    label 'linux && !cloud' // Choose a Linux computer at my house
     // kubernetes {
     //   yamlFile 'jenkins/pod-templates/cdt-full-pod-standard.yaml'
     // }
