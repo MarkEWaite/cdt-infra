@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'freebsd' // Choose a 5 year old machine with FreeBSD
+    label 'arm' // Choose a Raspberry Pi
     // kubernetes {
     //   yamlFile 'jenkins/pod-templates/cdt-full-pod-standard.yaml'
     // }
