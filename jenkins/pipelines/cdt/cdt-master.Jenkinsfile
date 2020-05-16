@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'linux && !cloud' // Choose a Linux computer at my house
+    label 'linux && !cloud && ubuntu18-a-jagent' // Choose a specific Linux computer at my house with rotating disc
     // kubernetes {
     //   yamlFile 'jenkins/pod-templates/cdt-full-pod-standard.yaml'
     // }
